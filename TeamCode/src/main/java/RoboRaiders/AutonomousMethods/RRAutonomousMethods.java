@@ -542,7 +542,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 //        runIntake(robot, 0.0);
 //        imuTurnPID(rrPID, robot, 85, "right");
 
-        imuTurnPID(rrPID180, robot, 185, "left");
+        imuTurnPID(rrPID180, robot, 180, "left");
         runIntake(robot, 1.0);
 //        double startTouchTime = System.currentTimeMillis();
 //        while (robot.getStoneDistance() <= 1.1 && System.currentTimeMillis()-startTouchTime < 1500){}
@@ -600,6 +600,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                 break;
             case 2: //stone is on the right
                 //middle2ndSkyStone(robot);
+                secondMiddleSkyStoneBlue(robot);
                 break;
             case 999:
                 //middle2ndSkyStone(robot);
@@ -630,8 +631,26 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 //        }
 //    }
 
+
+    public void secondMiddleSkyStoneBlue(Robot robot){
+        encodersMoveRTP(robot, 56, .8, "backward");
+        runIntake(robot, 0.0);
+        imuTurnPID(rrPID180, robot, 180, "left");
+        encodersMoveStrafe(robot, 17, 0.7, "left");//D = 19, P = .5
+        runIntake(robot, -1.0);
+        encodersMoveRTP(robot, 10, 0.3, "forward");
+        double startTouchTime = System.currentTimeMillis();
+        while (robot.getStoneDistance() <= 1.1 && System.currentTimeMillis()-startTouchTime < 1500) {} //keep going as long as it is under 1.5 seconds and the distance sensor is under 1 cm
+        runIntake(robot, 0.0);
+        //robot.setCaptureServoDown();
+        //robotSleep(500);
+        //liftMotorRTPDriveWithStone(robot);
+        encodersMoveStrafe(robot, 11.5, .8, "right");
+        encodersMoveRTP(robot, 60, .8, "backward");
+    }
+
     public void secondLeftSkyStoneBlue(Robot robot){
-        encodersMoveRTP(robot, 65, .8, "backward");
+        encodersMoveRTP(robot, 58, .8, "backward");
         runIntake(robot, 0.0);
         imuTurnPID(rrPID180, robot, 180, "left");
         encodersMoveStrafe(robot, 17, .5, "left");
@@ -682,9 +701,9 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robotSleep(500);
         liftMotorRTPDriveWithStone(robot);
         encodersMoveRTP(robot, 19, .8, "backward");
-        imuTurnPID(rrPID,robot, 60,  "right");
+        imuTurnPID(rrPID,robot, 65,  "right");
         //encodersMoveStrafe(robot, 20, .5, "right");
-        encodersMoveRTP(robot, 35, .8, "backward");
+        encodersMoveRTP(robot, 28, .8, "backward");
 //        stoneOnFoundation(robot);
 //        resetStoneMechanism(robot);
 //        encodersMoveStrafe(robot, 5, 0.5, "left");
@@ -692,19 +711,19 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 
     public void middleStoneBlue(Robot robot){
         encodersMoveRTP(robot, 18, .8, "forward");
-        imuTurnPID(rrPID, robot, 90,  "right");
-        encodersMoveRTP(robot, 15.5, .6, "backward");
-        encodersMoveStrafe(robot, 21, .7, "left");//D = 19, P = .5
+        imuTurnPID(rrPID, robot, 85,  "right");
+        encodersMoveRTP(robot, 13.5, .6, "backward");
+        encodersMoveStrafe(robot, 19, .7, "left");//D = 19, P = .5
         runIntake(robot, -1.0);
-        encodersMoveRTP(robot, 12, 1.0, "forward");
+        encodersMoveRTP(robot, 10, 0.5, "forward");
         double startTouchTime = System.currentTimeMillis();
         while (robot.getStoneDistance() <= 1.1 && System.currentTimeMillis()-startTouchTime < 1500) {} //keep going as long as it is under 1.5 seconds and the distance sensor is under 1 cm
         runIntake(robot, 0.0);
-        robot.setCaptureServoDown();
-        robotSleep(500);
-        liftMotorRTPDriveWithStone(robot);
-        encodersMoveStrafe(robot, 15, .8, "right");
-        encodersMoveRTP(robot, 47, .8, "backward");
+        //robot.setCaptureServoDown();
+        //robotSleep(500);
+        //liftMotorRTPDriveWithStone(robot);
+        encodersMoveStrafe(robot, 14.5, .8, "right");
+        encodersMoveRTP(robot, 42, .8, "backward");
 //        encodersMoveStrafe(robot, 10, .5, "right");
 //        stoneOnFoundation(robot);
 //        resetStoneMechanism(robot);
