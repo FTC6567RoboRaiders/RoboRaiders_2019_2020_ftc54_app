@@ -562,7 +562,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 //        runIntake(robot, 0.0);
 //        imuTurnPID(rrPID, robot, 85, "right");
 
-        imuTurnPID(rrPID180, robot, 180, "left");
+        imuTurnPID(rrPID180, robot, 178, "left");
         runIntake(robot, 1.0);
 //        double startTouchTime = System.currentTimeMillis();
 //        while (robot.getStoneDistance() <= 1.1 && System.currentTimeMillis()-startTouchTime < 1500){}
@@ -583,6 +583,8 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         switch (stoneLocation){
             case 1: //stone is on leftmost (not if the frame)
                 leftStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 176, "left");
+                runIntake(robot, 1.0);
                 break;
             case 3: //stone is on the left (middle)
                 rightStoneBlue(robot);
@@ -595,7 +597,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                 break;
         }
 
-        ejectStone(robot);
+       // ejectStone(robot);
 
         /**
          * at this point the robot has deposited the first stone on the foundation!
@@ -611,22 +613,24 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         // then just go and park
         // Get second sky stone in quarry.  The second skystone is closest to the field
         // perimeter
-//        switch (stoneLocation){
-//            case 1: //stone is on leftmost (not if the frame)
-//                secondLeftSkyStoneBlue(robot);
-//                break;
-//            case 3: //stone is on the left (middle)
-//               secondRightSkyStoneBlue(robot);
-//                break;
-//            case 2: //stone is on the right
-//                secondMiddleSkyStoneBlue(robot);
-//                break;
-//            case 999:
-//               secondMiddleSkyStoneBlue(robot);
-//                break;
-//        }
-//        ejectStone(robot);
-        encodersMoveRTP(robot, 15, .8, "backward");
+        switch (stoneLocation){
+            case 1: //stone is on leftmost (not if the frame)
+                secondLeftSkyStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 176, "left");
+                runIntake(robot, 1.0);
+                encodersMoveRTP(robot, 15, .8, "backward");
+                break;
+            case 3: //stone is on the left (middle)
+               secondRightSkyStoneBlue(robot);
+                break;
+            case 2: //stone is on the right
+                secondMiddleSkyStoneBlue(robot);
+                break;
+            case 999:
+               secondMiddleSkyStoneBlue(robot);
+                break;
+        }
+
         runIntake(robot, 0.0);
         encodersMoveStrafe(robot, 10, .8, "right");
     }
@@ -683,10 +687,10 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
     }
 
     public void secondLeftSkyStoneBlue(Robot robot){
-        encodersMoveRTP(robot, 58, .8, "backward");
+        encodersMoveRTP(robot, 52, .8, "backward");
         runIntake(robot, 0.0);
-        imuTurnPID(rrPID180, robot, 180, "left");
-        encodersMoveStrafe(robot, 17, .5, "left");
+        imuTurnPID(rrPID180, robot, 176, "left");
+        encodersMoveStrafe(robot, 14, .5, "left");
         runIntake(robot, -1.0);
         encodersMoveRTP(robot, 10, .8, "forward");
         double startTouchTime = System.currentTimeMillis();
@@ -695,7 +699,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robot.setCaptureServoDown();
         //robotSleep(500);
         //liftMotorRTPDriveWithStone(robot);
-        encodersMoveStrafe(robot, 17, .5, "right");
+        encodersMoveStrafe(robot, 15, .5, "right");
         encodersMoveRTP(robot, 60, .8, "backward");
     }
 
@@ -721,7 +725,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
     }
 
     public void leftStoneBlue(Robot robot){
-        encodersMoveRTP(robot, 21, .8, "forward");
+        encodersMoveRTP(robot, 20.5, .8, "forward");
         encodersMoveStrafe(robot, 25, .5, "left");
         imuTurnPID(rrPID,robot, 45,  "right");
         //robotSleep(100);
@@ -734,7 +738,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robotSleep(500);
 //        liftMotorRTPDriveWithStone(robot);
         encodersMoveRTP(robot, 13, .8, "backward");
-        imuTurnPID(rrPID,robot, 55,  "right");
+        imuTurnPID(rrPID,robot, 57,  "right");
         //encodersMoveStrafe(robot, 20, .5, "right");
         encodersMoveRTP(robot, 28, .8, "backward");
 //        stoneOnFoundation(robot);
