@@ -29,10 +29,12 @@ import java.text.DecimalFormat;
 
 import RoboRaiders.Robot.PidUdpReceiver;
 
-@TeleOp(name="PID test 2", group="utils")
+@TeleOp(name="PID Receiver Test", group="utils")
 public class PIDtest2 extends LinearOpMode
 {
     private double p, i, d;
+    private double deg, dir;
+
     private PidUdpReceiver pidUdpReceiver;
 
     @Override
@@ -57,6 +59,8 @@ public class PIDtest2 extends LinearOpMode
             telemetry.addData("P", formatVal(p));
             telemetry.addData("I", formatVal(i));
             telemetry.addData("D", formatVal(d));
+            telemetry.addData("Degrees", formatVal(deg));
+            telemetry.addData("Direction", formatVal(dir));
             telemetry.update();
         }
 
@@ -72,6 +76,8 @@ public class PIDtest2 extends LinearOpMode
         p = pidUdpReceiver.getP();
         i = pidUdpReceiver.getI();
         d = pidUdpReceiver.getD();
+        deg = pidUdpReceiver.getDegrees();
+        dir = pidUdpReceiver.getDirection();
     }
 
     /*

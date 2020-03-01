@@ -66,10 +66,7 @@ public class PidUdpReceiver
         return degrees;
     }
 
-    public synchronized double getDirection()
-    {
-        return direction;
-    }
+    public synchronized double getDirection() { return direction; }
 
     private void listen()
     {
@@ -90,6 +87,14 @@ public class PidUdpReceiver
                 byte[] dVal = new byte[8];
                 byte[] degVal = new byte[8];
                 byte[] dirVal = new byte[8];
+
+
+//                System.out.printf("Byte array packet %n");
+//                for (byte b : packet) {
+//                    String st = String.format("%02X", b);
+//                    System.out.printf(st);
+//                }
+//                System.out.printf("%n");
 
                 System.arraycopy(packet, 0, pVal, 0, 8);
                 System.arraycopy(packet, 8, iVal, 0, 8);

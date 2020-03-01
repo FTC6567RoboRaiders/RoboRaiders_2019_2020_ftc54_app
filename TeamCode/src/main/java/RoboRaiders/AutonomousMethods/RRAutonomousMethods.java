@@ -514,21 +514,21 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                 break;
         }
 
-        switch (stoneLocation) {
-            case 1: //stone is on leftmost (not if the frame)
-                secondLeftSkyStoneBlue(robot);
-                break;
-            case 3: //stone is on the left (middle)
-                secondRightSkyStoneBlue(robot);
-                break;
-            case 2: //stone is on the right
-                //middle2ndSkyStone(robot);
-                secondMiddleSkyStoneBlue(robot);
-                break;
-            case 999:
-                //middle2ndSkyStone(robot);
-                break;
-        }
+//        switch (stoneLocation) {
+//            case 1: //stone is on leftmost (not if the frame)
+//                secondLeftSkyStoneBlue(robot);
+//                break;
+//            case 3: //stone is on the left (middle)
+//                secondRightSkyStoneBlue(robot);
+//                break;
+//            case 2: //stone is on the right
+//                //middle2ndSkyStone(robot);
+//                secondMiddleSkyStoneBlue(robot);
+//                break;
+//            case 999:
+//                //middle2ndSkyStone(robot);
+//                break;
+//        }
         ejectStone(robot);
         encodersMoveRTP(robot, 15, .8, "backward");
         runIntake(robot, 0.0);
@@ -611,21 +611,21 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         // then just go and park
         // Get second sky stone in quarry.  The second skystone is closest to the field
         // perimeter
-        switch (stoneLocation){
-            case 1: //stone is on leftmost (not if the frame)
-                left2ndSkyStoneRed(robot);
-                break;
-            case 3: //stone is on the left (middle)
-               right2ndSkyStoneRed(robot);
-                break;
-            case 2: //stone is on the right
-                middle2ndSkyStoneRed(robot);
-                break;
-            case 999:
-               middle2ndSkyStoneRed(robot);
-                break;
-        }
-        ejectStone(robot);
+//        switch (stoneLocation){
+//            case 1: //stone is on leftmost (not if the frame)
+//                secondLeftSkyStoneBlue(robot);
+//                break;
+//            case 3: //stone is on the left (middle)
+//               secondRightSkyStoneBlue(robot);
+//                break;
+//            case 2: //stone is on the right
+//                secondMiddleSkyStoneBlue(robot);
+//                break;
+//            case 999:
+//               secondMiddleSkyStoneBlue(robot);
+//                break;
+//        }
+//        ejectStone(robot);
         encodersMoveRTP(robot, 15, .8, "backward");
         runIntake(robot, 0.0);
         encodersMoveStrafe(robot, 10, .8, "right");
@@ -721,7 +721,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
     }
 
     public void leftStoneBlue(Robot robot){
-        encodersMove(robot, 16.5, .8, "forward");
+        encodersMoveRTP(robot, 19, .8, "forward");
         encodersMoveStrafe(robot, 25, .5, "left");
         imuTurnPID(rrPID,robot, 45,  "right");
         //robotSleep(100);
@@ -1023,6 +1023,44 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 
         return motorPowers;
     }
+
+
+    /**
+     * Tuner method to tune the PID variables for driving straight
+     * @param robotPID
+     * @param robot
+     * @param wantedDistance
+     * @param direction
+     */
+    public void encoderDrivePIDTuner(RoboRaidersPID robotPID, Robot robot, double wantedDistance, double direction) {
+
+
+        robot.resetEncoders();
+        robot.runWithEncoders();
+        robotPID.initialize();   // re-initialized the pid variables that we care about
+
+        double EncoderCount = Math.abs(robot.driveTrainCalculateCounts(wantedDistance));
+        double currentEncoderCount = robot.getSortedEncoderCount();
+        if (direction == 0.0) {
+            while (opModeIsActive() && (currentEncoderCount <= EncoderCount || currentEncoderCount >= EncoderCount ))
+            {
+                motor_power = robotPID.CalculatePIDPowers(EncoderCount, robot.getSortedEncoderCount());
+                robot.setDriveMotorPower(motor_power, motor_power, motor_power, motor_power);
+                currentEncoderCount = robot.getSortedEncoderCount();
+            }
+
+        }
+        else if (direction == 1.0) {
+            while (opModeIsActive() && (currentEncoderCount <= EncoderCount || currentEncoderCount >= EncoderCount ))
+            {
+                motor_power = robotPID.CalculatePIDPowers(EncoderCount, robot.getSortedEncoderCount());
+                robot.setDriveMotorPower(-motor_power, -motor_power, -motor_power, -motor_power);
+                currentEncoderCount = robot.getSortedEncoderCount();
+            }
+
+        }
+    }
+
 
 }
 
