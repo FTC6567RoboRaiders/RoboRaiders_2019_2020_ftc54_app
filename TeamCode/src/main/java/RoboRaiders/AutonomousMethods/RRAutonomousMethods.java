@@ -630,16 +630,19 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                secondRightSkyStoneBlue(robot);
                 imuTurnPID(rrPID180, robot, 176, "left");
                 runIntake(robot, 1.0);
+                encodersMoveRTP(robot, 15, .8, "backward");
                 break;
             case 2: //stone is on the right
                 secondMiddleSkyStoneBlue(robot);
                 imuTurnPID(rrPID180, robot, 176, "left");
                 runIntake(robot, 1.0);
+                encodersMoveRTP(robot, 15, .8, "backward");
                 break;
             case 999:
                secondMiddleSkyStoneBlue(robot);
                 imuTurnPID(rrPID180, robot, 176, "left");
                 runIntake(robot, 1.0);
+                encodersMoveRTP(robot, 15, .8, "backward");
                 break;
         }
 
@@ -668,7 +671,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 
 
     public void secondMiddleSkyStoneBlue(Robot robot){
-        encodersMoveRTP(robot, 56, .8, "backward");
+        encodersMoveRTP(robot, 58, .8, "backward");
         runIntake(robot, 0.0);
         imuTurnPID(rrPID180, robot, 177, "left");
         encodersMoveStrafe(robot, 17, 0.7, "left");//D = 19, P = .5
@@ -681,14 +684,14 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robotSleep(500);
         //liftMotorRTPDriveWithStone(robot);
         encodersMoveStrafe(robot, 11.5, .8, "right");
-        encodersMoveRTP(robot, 60, .8, "backward");
+        encodersMoveRTP(robot, 62, .8, "backward");
     }
 
     public void secondRightSkyStoneBlue (Robot robot) {
-        encodersMoveRTP(robot,67 , .8,"backward");
+        encodersMoveRTP(robot,70 , .8,"backward");
         runIntake(robot, 0.0);
         imuTurnPID(rrPID180, robot, 180, "left");
-        encodersMoveStrafe(robot, 21, .7, "left");
+        encodersMoveStrafe(robot, 19, .7, "left");
         runIntake(robot, -1.0);
         encodersMoveRTP(robot,9, 0.3, "forward");
         double startTouchTime = System.currentTimeMillis();
@@ -717,9 +720,9 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 
     public void rightStoneBlue(Robot robot){
         encodersMoveRTP(robot, 19, .8, "forward");
-        imuTurnPID(rrPID, robot, 89,  "right");
+        imuTurnPID(rrPID, robot, 86,  "right");
         encodersMoveRTP(robot, 7, .6, "backward");
-        encodersMoveStrafe(robot, 20, .7, "left");
+        encodersMoveStrafe(robot, 20,.7, "left");
         runIntake(robot, -1.0);
         encodersMoveRTP(robot, 9, .8, "forward");
         double startTouchTime = System.currentTimeMillis();
