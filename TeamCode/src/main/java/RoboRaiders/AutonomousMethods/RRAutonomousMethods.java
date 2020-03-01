@@ -562,7 +562,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
 //        runIntake(robot, 0.0);
 //        imuTurnPID(rrPID, robot, 85, "right");
 
-        imuTurnPID(rrPID180, robot, 181, "left");
+        imuTurnPID(rrPID180, robot, 180, "left");
         runIntake(robot, 1.0);
 //        double startTouchTime = System.currentTimeMillis();
 //        while (robot.getStoneDistance() <= 1.1 && System.currentTimeMillis()-startTouchTime < 1500){}
@@ -721,7 +721,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
     }
 
     public void leftStoneBlue(Robot robot){
-        encodersMoveRTP(robot, 19, .8, "forward");
+        encodersMoveRTP(robot, 21, .8, "forward");
         encodersMoveStrafe(robot, 25, .5, "left");
         imuTurnPID(rrPID,robot, 45,  "right");
         //robotSleep(100);
@@ -732,9 +732,9 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         runIntake(robot, 0.0);
         //robot.setCaptureServoDown();
         //robotSleep(500);
-        liftMotorRTPDriveWithStone(robot);
-        encodersMoveRTP(robot, 19, .8, "backward");
-        imuTurnPID(rrPID,robot, 65,  "right");
+//        liftMotorRTPDriveWithStone(robot);
+        encodersMoveRTP(robot, 13, .8, "backward");
+        imuTurnPID(rrPID,robot, 55,  "right");
         //encodersMoveStrafe(robot, 20, .5, "right");
         encodersMoveRTP(robot, 28, .8, "backward");
 //        stoneOnFoundation(robot);
