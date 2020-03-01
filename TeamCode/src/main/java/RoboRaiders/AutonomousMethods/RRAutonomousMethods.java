@@ -588,12 +588,18 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                 break;
             case 3: //stone is on the left (middle)
                 rightStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 176, "left");
+                runIntake(robot, 1.0);
                 break;
             case 2: //stone is on the right
                 middleStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 175, "left");
+                runIntake(robot, 1.0);
                 break;
             case 999:
                 middleStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 175, "left");
+                runIntake(robot, 1.0);
                 break;
         }
 
@@ -622,12 +628,18 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                 break;
             case 3: //stone is on the left (middle)
                secondRightSkyStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 176, "left");
+                runIntake(robot, 1.0);
                 break;
             case 2: //stone is on the right
                 secondMiddleSkyStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 176, "left");
+                runIntake(robot, 1.0);
                 break;
             case 999:
                secondMiddleSkyStoneBlue(robot);
+                imuTurnPID(rrPID180, robot, 176, "left");
+                runIntake(robot, 1.0);
                 break;
         }
 
@@ -658,7 +670,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
     public void secondMiddleSkyStoneBlue(Robot robot){
         encodersMoveRTP(robot, 56, .8, "backward");
         runIntake(robot, 0.0);
-        imuTurnPID(rrPID180, robot, 180, "left");
+        imuTurnPID(rrPID180, robot, 177, "left");
         encodersMoveStrafe(robot, 17, 0.7, "left");//D = 19, P = .5
         runIntake(robot, -1.0);
         encodersMoveRTP(robot, 10, 0.3, "forward");
@@ -759,7 +771,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robot.setCaptureServoDown();
         //robotSleep(500);
         //liftMotorRTPDriveWithStone(robot);
-        encodersMoveStrafe(robot, 14.5, .8, "right");
+        encodersMoveStrafe(robot, 12.5, .8, "right");
         encodersMoveRTP(robot, 42, .8, "backward");
 //        encodersMoveStrafe(robot, 10, .5, "right");
 //        stoneOnFoundation(robot);
