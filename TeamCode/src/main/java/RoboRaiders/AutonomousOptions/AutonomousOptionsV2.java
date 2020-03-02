@@ -140,11 +140,11 @@ public class AutonomousOptionsV2 extends RRAutonomousMethods {
                     }
                     else{
                         //foundation no
-                        deliverStone(robot);
+                        //deliverStone(robot);
                     }
 
                     if(parkPerimeter) {
-                    parkSkyBridgeRed(robot);
+                    //parkSkyBridgeRed(robot);
                 }
                     else {
                     }
