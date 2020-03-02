@@ -551,21 +551,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
                 encodersMoveRTP(robot, 15, .8, "backward");
                 break;
         }
-//        switch (stoneLocation) {
-//            case 1: //stone is on leftmost (not if the frame)
-//                secondLeftSkyStoneBlue(robot);
-//                break;
-//            case 3: //stone is on the left (middle)
-//                secondRightSkyStoneBlue(robot);
-//                break;
-//            case 2: //stone is on the right
-//                //middle2ndSkyStone(robot);
-//                secondMiddleSkyStoneBlue(robot);
-//                break;
-//            case 999:
-//                //middle2ndSkyStone(robot);
-//                break;
-//        }
+//
         runIntake(robot, 0.0);
         encodersMoveStrafe(robot, 10, .8, "left");
 
@@ -754,10 +740,10 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
     }
 
     public void secondRightSkyStoneRed(Robot robot){
-        encodersMoveRTP(robot, 52, .8, "backward");
+        encodersMoveRTP(robot, 26, .8, "backward");
         runIntake(robot, 0.0);
         imuTurnPID(rrPID180, robot, 176, "left");
-        encodersMoveStrafe(robot, 14, .5, "left");
+        encodersMoveStrafe(robot, 14, .5, "right");
         runIntake(robot, -1.0);
         encodersMoveRTP(robot, 10, .8, "forward");
         double startTouchTime = System.currentTimeMillis();
@@ -766,7 +752,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robot.setCaptureServoDown();
         //robotSleep(500);
         //liftMotorRTPDriveWithStone(robot);
-        encodersMoveStrafe(robot, 15, .5, "right");
+        encodersMoveStrafe(robot, 15, .5, "left");
         encodersMoveRTP(robot, 60, .8, "backward");
     }
 
