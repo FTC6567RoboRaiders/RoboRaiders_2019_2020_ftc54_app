@@ -743,7 +743,7 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         encodersMoveRTP(robot, 26, .8, "backward");
         runIntake(robot, 0.0);
         imuTurnPID(rrPID180, robot, 176, "left");
-        encodersMoveStrafe(robot, 14, .5, "right");
+        encodersMoveStrafe(robot, 16, .5, "right");
         runIntake(robot, -1.0);
         encodersMoveRTP(robot, 10, .8, "forward");
         double startTouchTime = System.currentTimeMillis();
@@ -752,8 +752,8 @@ public abstract class RRAutonomousMethods extends LinearOpMode {
         //robot.setCaptureServoDown();
         //robotSleep(500);
         //liftMotorRTPDriveWithStone(robot);
-        encodersMoveStrafe(robot, 15, .5, "left");
-        encodersMoveRTP(robot, 60, .8, "backward");
+        encodersMoveStrafe(robot, 16, .5, "left");
+        encodersMoveRTP(robot, 56, .8, "backward");
     }
 
     public void secondRightSkyStoneBlue (Robot robot) {
